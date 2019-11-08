@@ -1,5 +1,7 @@
 # express-session-poc<br />
 
+## yarn install
+
 ## Start the app in development mode using `yarn run dev`.
 to get started, go to postman - or other api service.<br />
 The server is hosted on port:3000<br />
