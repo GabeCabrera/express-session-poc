@@ -104,7 +104,7 @@ app.post('/logout', handleUnauthenticatedState, (req, res) => {
 });
 
 app.listen(PORT, () => console.log(
-  `http://localhost:${PORT}`
+  `App is running on port:${PORT}`
 ));
 
 
