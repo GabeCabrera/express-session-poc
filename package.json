@@ -1,0 +1,18 @@
+{
+  "name": "sess-auth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "sha1": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
