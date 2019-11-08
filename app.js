@@ -6,11 +6,8 @@ const bcrypt = require('bcrypt');
 const app = express();
 app.use(express.urlencoded({extended: true}));
 
-// TODO: wire to DB
 const users = [
-  { id: 1, name:'Gabe', email: 'gabe@spearfrog.com', password: 'password' },
-  { id: 2, name:'Schott', email: 'schott@spearfrog.com', password: 'password' },
-  { id: 3, name:'Haggard', email: 'haggard@spearfrog.com', password: 'password' }
+  { id: 1, name:'user', email: 'user@fakedomain.com', password: 'password' }
 ];
 
 const {
@@ -25,15 +22,6 @@ app.use(session({
   saveUninitialized: false,
   secret: SESS_SECRET
 }));
-
-const cryptPassword = async (password) => {
-  bcrypt.hash(password, 10)
-  .then((hash) => {
-    console.log(hash)
-    return hash
-  })
-  .catch((err) => err)
-};
 
 const handleUnauthenticatedState = (req, res, next) => {
   if(!req.session.userId) {
@@ -54,19 +42,6 @@ const handleAuthenticatedState = (req, res, next) => {
 let serverToken = '';
 let userId = '';
 const saltRounds = 10;
-
-// export const login = async (req, res) => {
-//   await getProfileByUsername(req.body.username)
-//     .then((data) => {
-//       if (bcrypt.compareSync(req.body.password, data.password)) {
-//         res.send('Yeah. Your password matches'); 
-//       }
-//       else {
-//         res.send('Sorry, your password sucks!');
-//       }
-//     })
-//     .catch((err) => res.send('Username check failed'));
-// }
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
