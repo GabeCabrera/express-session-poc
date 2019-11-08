@@ -91,13 +91,12 @@ app.post('/register', handleAuthenticatedState, (req, res) => {
         password
       };
 
-        user.password = req.body.password = bcrypt.hashSync(req.body.password, saltRounds);
-        console.log(JSON.stringify(user));
+        user.password = bcrypt.hashSync(req.body.password, saltRounds);
         req.session.userId  = user.id;
-        return res.send('/home');
+        return res.send('User created successfully, please log in.');
     }
   }
-  res.send('Error registering user'); // TODO: QueryString errors /register?error=error.auth.userExists
+  res.send('Error registering user, check if a field is empty');
 });
 
 app.post('/logout', handleUnauthenticatedState, (req, res) => {
